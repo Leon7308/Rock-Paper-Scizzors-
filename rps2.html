@@ -1,0 +1,136 @@
+<!Doctype <!DOCTYPE html>
+<html>
+    <div id="container">
+        <button id="0">Rock</button>
+        <button id="1">Paper</button>
+        <button id="2">Scissors</button>
+    </div>
+
+    <script>
+        
+       
+        var cpuscore = 0;
+        var playerscore = 0;
+        var arr=["ROCK", "PAPER", "SCIZZOR"];
+        const buttons = document.querySelectorAll('button');
+       
+        function computerPlay(){
+           
+           
+            var arr=["ROCK", "PAPER", "SCIZZOR"];
+            return arr[Math.floor(Math.random()*arr.length)]
+        }   
+
+        function playerPlay(x){
+            //alert("Enter your selection!");
+            playermove = arr[x];
+            return playermove;
+            
+                    
+            
+        }
+
+        function Round(playerSelection, computerSelection)
+        {
+            alert("CPU played " + computerSelection);
+            if(playerSelection.toLowerCase() == "rock")
+               {
+                   if(computerSelection == "ROCK"){
+                        alert("Draw!");
+                   }
+
+                   if(computerSelection == "PAPER"){
+                       cpuscore = cpuscore + 1;
+                       alert("CPU gets a point!");
+                    }
+
+                    if(computerSelection == "SCIZZOR"){
+                       playerscore = playerscore + 1;
+                       alert("Player gets a point!");
+                    }
+               }
+
+               else if(playerSelection.toLowerCase() == "paper")
+               {
+                   if(computerSelection == "ROCK"){
+                        playerscore = playerscore + 1;
+                        alert("Player gets a point!");
+                    }
+
+                   if(computerSelection == "PAPER"){
+                        alert("Draw!");
+                    }
+
+                    if(computerSelection == "SCIZZOR"){
+                        cpuscore = cpuscore + 1;
+                        alert("CPU gets a point!");
+
+                    }
+
+                    
+               }
+               
+               else if(playerSelection.toLowerCase()=="scissor"||playerSelection.toLowerCase()=="scizzor")
+               {
+                   if(computerSelection == "ROCK"){
+                        cpuscore = cpuscore + 1;
+                        alert("CPU gets a point!");
+                   }
+
+                   if(computerSelection == "PAPER"){
+                        playerscore = playerscore + 1;
+                        alert("Player gets a point!");
+                    }
+
+                    if(computerSelection == "SCIZZOR"){
+                        alert("Draw!");
+                    }
+
+               }
+
+                else
+                {
+                    alert("Unidentified input");
+                }
+
+               
+        }
+
+        function game(){
+            
+            
+            buttons.forEach((button) => {   
+                button.addEventListener('click', (e) => {
+                    
+                    var x = playerPlay(button.id);
+                    var y = computerPlay();
+
+             
+
+                    Round(x,y);
+                    alert("Player - " + playerscore  +  "   CPU - " + cpuscore);
+                   /* 
+
+
+                    if (cpuscore>=5){
+                        alert("Cpu wins!")
+                    }
+
+                    else if (playerscore>=5){
+                        alert("You win!")
+                    }
+
+                    //else 
+                        //console.log(game());
+*/
+                });
+            });  
+        }       
+        
+        console.log(game());
+        
+
+    </script>
+
+</html>
+
